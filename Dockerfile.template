@@ -1,4 +1,4 @@
-FROM resin/nuc-debian
+FROM resin/%%RESIN_MACHINE_NAME%%-debian
 
 ENV PACKAGES_DIR=/tmp/particle-agent-packages-$BASHPID
 ENV AGENT_VER=${AGENT_VER:-0.2.4-1}
@@ -24,4 +24,6 @@ RUN sudo dpkg --install \
     $PACKAGES_DIR/ruby-whirly_${WHIRLY_VER}_all.deb \
     $PACKAGES_DIR/ruby-particlerb_${PARTICLERB_VER}_all.deb \
   && sudo apt-get install -f -y
+
+CMD ["sleep", "infinity"]
 
